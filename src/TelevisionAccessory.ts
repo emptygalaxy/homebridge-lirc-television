@@ -33,10 +33,10 @@ export class TelevisionAccessory implements AccessoryPlugin {
         this.manufacturer = config.manufacturer || 'LG';
         this.serial = config.serialNumber || '';
         this.model = config.model || '';
-        this.remoteName = config.remoteName || 'LG';
+        this.remoteName = config.remoteName || 'TV';
         this.commands = config.commands;
 
-        this.television = new Television(this.remoteName, this.commands);
+        this.television = new Television(this.log, this.remoteName, this.commands);
 
         // hap
         const Service = this.api.hap.Service;
@@ -178,10 +178,11 @@ export class TelevisionAccessory implements AccessoryPlugin {
     private setActiveIdentifier(value: CharacteristicValue, callback: CharacteristicSetCallback): void {
         try {
             this.log.info('set active identifier', value);
-            if(value == 'USB')
+            if(value === 'USB') {
                 this.television.usb();
-            else
+            } else {
                 this.television.hdmi();
+            }
 
             this.activeIdentifier = value as string;
             callback();

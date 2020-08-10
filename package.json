@@ -1,6 +1,6 @@
 {
-  "name": "homebridge-ir-television",
-  "description": "",
+  "name": "homebridge-lirc-television",
+  "description": "A Television using LIRC commands",
   "version": "0.0.1",
   "main": "dist/index.js",
   "scripts": {
@@ -32,5 +32,13 @@
     "rimraf": "^3.0.2",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emptygalaxy/homebridge-lirc-television.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emptygalaxy/homebridge-lirc-television/issues"
+  },
+  "homepage": "https://github.com/emptygalaxy/homebridge-lirc-television#readme"
 }

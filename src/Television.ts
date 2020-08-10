@@ -1,4 +1,5 @@
 import {IrRemote} from './IrRemote';
+import {Logger} from "homebridge/lib/logger";
 
 export class Television {
     private readonly remote: IrRemote;
@@ -7,8 +8,8 @@ export class Television {
     private muted = false;
     private playing = false;
 
-    constructor(remoteName: string, commands?: {[k: string]: string}) {
-        this.remote = new IrRemote(remoteName, commands);
+    constructor(log: Logger, remoteName: string, commands?: {[k: string]: string}) {
+        this.remote = new IrRemote(log, remoteName, commands);
     }
 
     public turnOn(): void {

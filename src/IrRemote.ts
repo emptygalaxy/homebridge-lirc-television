@@ -1,8 +1,10 @@
 import {IIrRemote} from './IIrRemote';
-
-const lirc = require('lirc_node');
+import {Logger} from "homebridge/lib/logger";
+import lirc = require('lirc_node');
+// const lirc = require('lirc_node');
 
 export class IrRemote implements IIrRemote {
+    private log: Logger;
     private readonly remoteName;
 
     private readonly powerCommand;
@@ -48,9 +50,10 @@ export class IrRemote implements IIrRemote {
     private readonly yellowCommand: string;
     private readonly blueCommand: string;
 
-    constructor(remoteName?: string, commands?: {[k: string]: string}) {
+    constructor(log: Logger, remoteName?: string, commands?: {[k: string]: string}) {
         lirc.init();
 
+        this.log = log;
         this.remoteName = remoteName || 'LG-P150G-GL';
 
         if(commands === undefined) {
@@ -100,144 +103,147 @@ export class IrRemote implements IIrRemote {
         this.blueCommand = commands.blue || 'KEY_BLUE';
     }
 
+    private send(command: string): void
+    {
+        this.log.info('Send LIRC', this.remoteName, command);
+        lirc.irsend.send_once(this.remoteName, command);
+    }
 
     public power(): void {
-        lirc.irsend.send_once(this.remoteName, this.powerCommand);
+        this.send(this.powerCommand);
     }
 
     public mute(): void {
-        lirc.irsend.send_once(this.remoteName, this.muteCommand);
+        this.send(this.muteCommand);
     }
 
     public input(): void {
-        lirc.irsend.send_once(this.remoteName, this.inputCommand);
+        this.send(this.inputCommand);
     }
 
     public volumeUp(): void {
-        lirc.irsend.send_once(this.remoteName, this.volumeUpCommand);
+        this.send(this.volumeUpCommand);
     }
 
     public volumeDown(): void {
-        lirc.irsend.send_once(this.remoteName, this.volumeDownCommand);
+        this.send(this.volumeDownCommand);
     }
 
     public pageUp(): void {
-        lirc.irsend.send_once(this.remoteName, this.pageUpCommand);
+        this.send(this.pageUpCommand);
     }
 
     public pageDown(): void {
-        lirc.irsend.send_once(this.remoteName, this.pageDownCommand);
+        this.send(this.pageDownCommand);
     }
 
 
     public picture(): void {
-        lirc.irsend.send_once(this.remoteName, this.pictureCommand);
+        this.send(this.pictureCommand);
     }
 
     public blank(): void {
-        lirc.irsend.send_once(this.remoteName, this.blankCommand);
+        this.send(this.blankCommand);
     }
 
     public up(): void {
-        lirc.irsend.send_once(this.remoteName, this.upCommand);
+        this.send(this.upCommand);
     }
 
     public left(): void {
-        lirc.irsend.send_once(this.remoteName, this.leftCommand);
+        this.send(this.leftCommand);
     }
 
     public enter(): void {
-        lirc.irsend.send_once(this.remoteName, this.enterCommand);
+        this.send(this.enterCommand);
     }
 
     public right(): void {
-        lirc.irsend.send_once(this.remoteName, this.rightCommand);
+        this.send(this.rightCommand);
     }
 
     public down(): void {
-        lirc.irsend.send_once(this.remoteName, this.downCommand);
+        this.send(this.downCommand);
     }
 
 
     public exit(): void {
-        lirc.irsend.send_once(this.remoteName, this.exitCommand);
+        this.send(this.exitCommand);
     }
 
     public back(): void {
-        lirc.irsend.send_once(this.remoteName, this.backCommand);
+        this.send(this.backCommand);
     }
 
 
     public settings(): void {
-        lirc.irsend.send_once(this.remoteName, this.settingsCommand);
+        this.send(this.settingsCommand);
     }
 
     public qMenu(): void {
-        lirc.irsend.send_once(this.remoteName, this.qMenuCommand);
+        this.send(this.qMenuCommand);
     }
 
     public still(): void {
-        lirc.irsend.send_once(this.remoteName, this.stillCommand);
+        this.send(this.stillCommand);
     }
 
     public ratio(): void {
-        lirc.irsend.send_once(this.remoteName, this.ratioCommand);
+        this.send(this.ratioCommand);
     }
 
     public usb(): void {
-        lirc.irsend.send_once(this.remoteName, this.usbCommand);
+        this.send(this.usbCommand);
     }
 
 
     public help(): void {
-        lirc.irsend.send_once(this.remoteName, this.helpCommand);
+        this.send(this.helpCommand);
     }
 
     public keystoneUp(): void {
-        lirc.irsend.send_once(this.remoteName, this.keystoneUpCommand);
+        this.send(this.keystoneUpCommand);
     }
 
     public keystoneDown(): void {
-        lirc.irsend.send_once(this.remoteName, this.keystoneDownCommand);
+        this.send(this.keystoneDownCommand);
     }
 
 
     public rewind(): void {
-        lirc.irsend.send_once(this.remoteName, this.rewindCommand);
+        this.send(this.rewindCommand);
     }
 
     public play(): void {
-        lirc.irsend.send_once(this.remoteName, this.playCommand);
+        this.send(this.playCommand);
     }
 
     public forward(): void {
-        lirc.irsend.send_once(this.remoteName, this.forwardCommand);
+        this.send(this.forwardCommand);
     }
 
     public stop(): void {
-        lirc.irsend.send_once(this.remoteName, this.stopCommand);
+        this.send(this.stopCommand);
     }
 
     public pause(): void {
-        lirc.irsend.send_once(this.remoteName, this.pauseCommand);
+        this.send(this.pauseCommand);
     }
 
-
-
     public red(): void {
-        lirc.irsend.send_once(this.remoteName, this.redCommand);
+        this.send(this.redCommand);
     }
 
     public green(): void {
-        lirc.irsend.send_once(this.remoteName, this.greenCommand);
+        this.send(this.greenCommand);
     }
 
     public yellow(): void {
-        lirc.irsend.send_once(this.remoteName, this.yellowCommand);
+        this.send(this.yellowCommand);
     }
 
     public blue(): void {
-        lirc.irsend.send_once(this.remoteName, this.blueCommand);
+        this.send(this.blueCommand);
     }
 
 }
