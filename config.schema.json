@@ -1,0 +1,241 @@
+{
+  "pluginAlias": "ir-television",
+  "pluginType": "accessory",
+  "singular": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true
+      },
+      "manufacturer": {
+        "title": "Manufacturer",
+        "type": "string",
+        "default": "Panasonic",
+        "required": false
+      },
+      "model": {
+        "title": "Model",
+        "type": "string",
+        "required": false
+      },
+      "serialNumber": {
+        "title": "Serial Number",
+        "type": "string",
+        "required": false
+      },
+
+      "remoteName": {
+        "title": "LIRC Remote name",
+        "type": "string",
+        "required": true
+      },
+      "commands": {
+        "type": "object",
+        "properties": {
+          "power": {
+            "title": "Power command",
+            "type": "string",
+            "default": "KEY_POWER",
+            "required": false
+          },
+          "mute": {
+            "title": "Mute command",
+            "type": "string",
+            "default": "KEY_MUTE",
+            "required": false
+          },
+          "input": {
+            "title": "Input command",
+            "type": "string",
+            "default": "KEY_SCREEN",
+            "required": false
+          },"volumeUp": {
+            "title": "volumeUp command",
+            "type": "string",
+            "default": "KEY_VOLUMEUP",
+            "required": false
+          },
+          "volumeDown": {
+            "title": "volumeDown command",
+            "type": "string",
+            "default": "KEY_VOLUMEDOWN",
+            "required": false
+          },
+          "pageUp": {
+            "title": "pageUp command",
+            "type": "string",
+            "default": "KEY_PAGEUP",
+            "required": false
+          },
+          "pageDown": {
+            "title": "pageDown command",
+            "type": "string",
+            "default": "KEY_PAGEDOWN",
+            "required": false
+          },
+          "picture": {
+            "title": "picture command",
+            "type": "string",
+            "default": "KEY_PC",
+            "required": false
+          },
+          "blank": {
+            "title": "blank command",
+            "type": "string",
+            "default": "KEY_CLEAR",
+            "required": false
+          },
+          "up": {
+            "title": "up command",
+            "type": "string",
+            "default": "KEY_UP",
+            "required": false
+          },
+          "left": {
+            "title": "left command",
+            "type": "string",
+            "default": "KEY_LEFT",
+            "required": false
+          },
+          "enter": {
+            "title": "enter command",
+            "type": "string",
+            "default": "KEY_ENTER",
+            "required": false
+          },
+          "right": {
+            "title": "right command",
+            "type": "string",
+            "default": "KEY_RIGHT",
+            "required": false
+          },
+          "down": {
+            "title": "down command",
+            "type": "string",
+            "default": "KEY_DOWN",
+            "required": false
+          },
+          "exit": {
+            "title": "exit command",
+            "type": "string",
+            "default": "KEY_EXIT",
+            "required": false
+          },
+          "back": {
+            "title": "back command",
+            "type": "string",
+            "default": "KEY_BACK",
+            "required": false
+          },
+          "settings": {
+            "title": "settings command",
+            "type": "string",
+            "default": "KEY_CONTROLPANEL",
+            "required": false
+          },
+          "qMenu": {
+            "title": "qMenu command",
+            "type": "string",
+            "default": "KEY_CONTEXT_MENU",
+            "required": false
+          },
+          "still": {
+            "title": "still command",
+            "type": "string",
+            "default": "KEY_IMAGES",
+            "required": false
+          },
+          "ratio": {
+            "title": "ratio command",
+            "type": "string",
+            "default": "KEY_ZOOM",
+            "required": false
+          },
+          "usb": {
+            "title": "usb command",
+            "type": "string",
+            "default": "KEY_FILE",
+            "required": false
+          },
+          "help": {
+            "title": "help command",
+            "type": "string",
+            "default": "KEY_HELP",
+            "required": false
+          },
+          "keystoneUp": {
+            "title": "keystoneUp command",
+            "type": "string",
+            "default": "KEY_CAMERA_UP",
+            "required": false
+          },
+          "keystoneDown": {
+            "title": "keystoneDown command",
+            "type": "string",
+            "default": "KEY_CAMERA_DOWN",
+            "required": false
+          },
+          "rewind": {
+            "title": "rewind command",
+            "type": "string",
+            "default": "KEY_REWIND",
+            "required": false
+          },
+          "play": {
+            "title": "play command",
+            "type": "string",
+            "default": "KEY_PLAY",
+            "required": false
+          },
+          "forward": {
+            "title": "forward command",
+            "type": "string",
+            "default": "KEY_FORWARD",
+            "required": false
+          },
+          "stop": {
+            "title": "stop command",
+            "type": "string",
+            "default": "KEY_STOP",
+            "required": false
+          },
+          "pause": {
+            "title": "pause command",
+            "type": "string",
+            "default": "KEY_PAUSE",
+            "required": false
+          },
+          "red": {
+            "title": "red command",
+            "type": "string",
+            "default": "KEY_RED",
+            "required": false
+          },
+          "green": {
+            "title": "green command",
+            "type": "string",
+            "default": "KEY_GREEN",
+            "required": false
+          },
+          "yellow": {
+            "title": "yellow command",
+            "type": "string",
+            "default": "KEY_YELLOW",
+            "required": false
+          },
+          "blue": {
+            "title": "blue command",
+            "type": "string",
+            "default": "KEY_BLUE",
+            "required": false
+          }
+        }
+      }
+    }
+  },
+  "form": null,
+  "display": null
+}
