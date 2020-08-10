@@ -1,5 +1,5 @@
 import {IIrRemote} from './IIrRemote';
-import {Logger} from "homebridge/lib/logger";
+import {Logger} from 'homebridge/lib/logger';
 import lirc = require('lirc_node');
 // const lirc = require('lirc_node');
 
@@ -103,8 +103,7 @@ export class IrRemote implements IIrRemote {
         this.blueCommand = commands.blue || 'KEY_BLUE';
     }
 
-    private send(command: string): void
-    {
+    private send(command: string): void {
         this.log.info('Send LIRC', this.remoteName, command);
         lirc.irsend.send_once(this.remoteName, command);
     }

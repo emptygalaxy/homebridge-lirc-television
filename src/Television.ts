@@ -1,5 +1,5 @@
 import {IrRemote} from './IrRemote';
-import {Logger} from "homebridge/lib/logger";
+import {Logger} from 'homebridge/lib/logger';
 
 export class Television {
     private readonly remote: IrRemote;
