@@ -2,6 +2,8 @@ import {AccessoryPlugin, API} from 'homebridge/lib/api';
 import {Logger} from 'homebridge/lib/logger';
 import {Service, CharacteristicEventTypes, CharacteristicGetCallback, CharacteristicValue, CharacteristicSetCallback} from 'hap-nodejs';
 import {Television} from './Television';
+import {TelevisionEvent} from './TelevisionEvent';
+import {AccessoryConfig, CommandsConfig} from './AccessoryConfig';
 
 export class TelevisionAccessory implements AccessoryPlugin {
     private readonly log: Logger;
@@ -13,7 +15,8 @@ export class TelevisionAccessory implements AccessoryPlugin {
     private readonly serial: string;
     private readonly model: string;
     private readonly remoteName: string;
-    private readonly commands: {[k: string]: string};
+    private readonly commands?: CommandsConfig;
+    private readonly automaticOffTime?: number;
 
     private readonly television: Television;
 
@@ -23,7 +26,7 @@ export class TelevisionAccessory implements AccessoryPlugin {
 
     private activeIdentifier: string;
 
-    constructor(log: Logger, config, api: API) {
+    constructor(log: Logger, config: AccessoryConfig, api: API) {
         this.log = log;
         this.config = config;
         this.api = api;
@@ -35,8 +38,10 @@ export class TelevisionAccessory implements AccessoryPlugin {
         this.model = config.model || '';
         this.remoteName = config.remoteName || 'TV';
         this.commands = config.commands;
+        this.automaticOffTime = config.automaticOffTime;
 
-        this.television = new Television(this.log, this.remoteName, this.commands);
+        this.television = new Television(this.log, this.remoteName, this.commands, this.automaticOffTime);
+        this.television.on(TelevisionEvent.TurnedOff, this.handleTelevisionOff.bind(this));
 
         // hap
         const Service = this.api.hap.Service;
@@ -191,5 +196,12 @@ export class TelevisionAccessory implements AccessoryPlugin {
             this.log.error(e);
             callback(e);
         }
+    }
+
+    private handleTelevisionOff(): void {
+        // hap
+        const Characteristic = this.api.hap.Characteristic;
+
+        this.tvService.getCharacteristic(Characteristic.Active).updateValue(this.television.isTurnedOn());
     }
 }

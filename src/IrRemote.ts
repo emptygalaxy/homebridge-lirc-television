@@ -1,6 +1,7 @@
 import {IIrRemote} from './IIrRemote';
 import {Logger} from 'homebridge/lib/logger';
 import lirc = require('lirc_node');
+import {CommandsConfig} from './AccessoryConfig';
 // const lirc = require('lirc_node');
 
 export class IrRemote implements IIrRemote {
@@ -50,7 +51,7 @@ export class IrRemote implements IIrRemote {
     private readonly yellowCommand: string;
     private readonly blueCommand: string;
 
-    constructor(log: Logger, remoteName?: string, commands?: {[k: string]: string}) {
+    constructor(log: Logger, remoteName?: string, commands?: CommandsConfig) {
         lirc.init();
 
         this.log = log;

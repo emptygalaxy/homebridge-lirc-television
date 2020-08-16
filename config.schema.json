@@ -26,6 +26,12 @@
         "type": "string",
         "required": false
       },
+      "automaticOffTime": {
+        "title": "Automatic off time (minutes)",
+        "type": "number",
+        "default": 240,
+        "required": false
+      },
 
       "remoteName": {
         "title": "LIRC Remote name",
@@ -34,6 +40,7 @@
       },
       "commands": {
         "type": "object",
+        "required": false,
         "properties": {
           "power": {
             "title": "Power command",
@@ -52,7 +59,8 @@
             "type": "string",
             "default": "KEY_SCREEN",
             "required": false
-          },"volumeUp": {
+          },
+          "volumeUp": {
             "title": "volumeUp command",
             "type": "string",
             "default": "KEY_VOLUMEUP",
